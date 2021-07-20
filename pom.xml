@@ -21,6 +21,7 @@
     <properties>
         <java.version>11</java.version>
     </properties>
+
     <dependencies>
 
     </dependencies>
@@ -39,6 +40,13 @@
                 <!--                        </exclude>-->
                 <!--                    </excludes>-->
                 <!--                </configuration>-->
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <goals>install</goals>
+                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -61,5 +69,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <scm>
+        <developerConnection>scm:git:https://github.com/Uptaker/pet-clinic-demo.git</developerConnection>
+    </scm>
 
 </project>
