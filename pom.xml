@@ -14,7 +14,7 @@
     </parent>
     <groupId>codes.drinky</groupId>
     <artifactId>pet-clinic-demo</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3-SNAPSHOT</version>
     <name>pet-clinic-demo</name>
     <description>Demo project for Spring Boot</description>
     <properties>
@@ -75,7 +75,7 @@
 
     <scm>
         <developerConnection>scm:git:git@github.com:Uptaker/pet-clinic-demo.git</developerConnection>
-      <tag>pet-clinic-demo-0.0.2</tag>
+      <tag>HEAD</tag>
   </scm>
 
 </project>
