@@ -14,7 +14,7 @@
     </parent>
     <groupId>codes.drinky</groupId>
     <artifactId>pet-clinic-demo</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.2</version>
     <name>pet-clinic-demo</name>
     <description>Demo project for Spring Boot</description>
     <properties>
@@ -45,6 +45,10 @@
                 <artifactId>maven-release-plugin</artifactId>
                 <configuration>
                     <goals>install</goals>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <checkModificationExcludes>
+                        <checkModificationExclude>pom.xml</checkModificationExclude>
+                    </checkModificationExcludes>
                 </configuration>
             </plugin>
             <plugin>
@@ -70,8 +74,8 @@
     </build>
 
     <scm>
-        <developerConnection>scm:git:https://github.com/Uptaker/pet-clinic-demo.git</developerConnection>
-      <tag>HEAD</tag>
+        <developerConnection>scm:git:git@github.com:Uptaker/pet-clinic-demo.git</developerConnection>
+      <tag>pet-clinic-demo-0.0.2</tag>
   </scm>
 
 </project>
