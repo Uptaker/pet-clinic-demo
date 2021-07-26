@@ -1,11 +1,11 @@
 package codes.drinky.petclinicdemo.services.map;
 
 import codes.drinky.petclinicdemo.model.Vet;
-import codes.drinky.petclinicdemo.services.CrudService;
+import codes.drinky.petclinicdemo.services.VetService;
 
 import java.util.Set;
 
-public class VetServiceMap extends AbstractMapService<Vet, Long> implements CrudService<Vet, Long> {
+public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
 
     @Override
     public Set<Vet> findAll() {
@@ -32,4 +32,8 @@ public class VetServiceMap extends AbstractMapService<Vet, Long> implements Crud
         return super.findById(id);
     }
 
+    @Override
+    public Vet findByLastName(String lastName) {
+        return null;
+    }
 }
