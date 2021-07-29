@@ -1,6 +1,8 @@
 package codes.drinky.petclinicdemo.services.map;
 
+import codes.drinky.petclinicdemo.model.Specialty;
 import codes.drinky.petclinicdemo.model.Vet;
+import codes.drinky.petclinicdemo.services.SpecialtiesService;
 import codes.drinky.petclinicdemo.services.VetService;
 import org.springframework.stereotype.Service;
 
@@ -8,6 +10,12 @@ import java.util.Set;
 
 @Service
 public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
+
+    private SpecialtiesService specialtiesService;
+
+    public VetServiceMap(SpecialtiesService specialtiesService) {
+        this.specialtiesService = specialtiesService;
+    }
 
     @Override
     public Set<Vet> findAll() {
@@ -26,6 +34,16 @@ public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetS
 
     @Override
     public Vet save(Vet object) {
+
+        if (object.getSpecialties().size() >0) {
+            for (Specialty specialty : object.getSpecialties()) {
+                if (specialty.getId() == null) {
+                    Specialty savedSpecialty = specialtiesService.save(specialty);
+                    specialty.setId(savedSpecialty.getId());
+                }
+            }
+        }
+
         return super.save(object);
     }
 
