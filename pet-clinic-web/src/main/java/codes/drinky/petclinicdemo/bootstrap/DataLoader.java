@@ -1,10 +1,7 @@
 package codes.drinky.petclinicdemo.bootstrap;
 
 import codes.drinky.petclinicdemo.model.*;
-import codes.drinky.petclinicdemo.services.OwnerService;
-import codes.drinky.petclinicdemo.services.PetTypeService;
-import codes.drinky.petclinicdemo.services.SpecialtiesService;
-import codes.drinky.petclinicdemo.services.VetService;
+import codes.drinky.petclinicdemo.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -18,13 +15,15 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialtiesService specialtiesService;
+    private final VisitService visitService;
 
     @Autowired
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtiesService specialtiesService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtiesService specialtiesService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialtiesService = specialtiesService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -92,6 +91,12 @@ public class DataLoader implements CommandLineRunner {
         owner2.getPets().add(siimPet);
 
         ownerService.save(owner2);
+
+        Visit catVisit = new Visit();
+        catVisit.setPet(siimPet);
+        catVisit.setDescription("Feline grooming and checkup");
+        catVisit.setDate(LocalDate.now());
+        visitService.save(catVisit);
 
         System.out.println("Owners loaded..");
 
